@@ -1,13 +1,14 @@
 package tests;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.hasSize;
+import static io.restassured.http.ContentType.JSON;
+import static org.hamcrest.Matchers.*;
 
 public class BookstoreTests {
     @BeforeAll
@@ -44,5 +45,27 @@ public class BookstoreTests {
                 .log().status()
                 .log().body()
                 .body("books", hasSize(greaterThan(0)));
+    }
+
+    @Test
+    void generateTokenTest() {
+        String data = "{ \"userName\": \"alex\", " +
+                "\"password\": \"asdsad#frew_DFS2\" }";
+
+        given()
+                .contentType(JSON)
+                .body(data)
+                .log().uri()
+                .log().body()
+                .when()
+                .post("Account/v1/GenerateToken")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200)
+                .body("status", is("Success"))
+                .body("result", is("User authorized successfully."))
+                .body("token.size()", (greaterThan(10)));
+
     }
 }
