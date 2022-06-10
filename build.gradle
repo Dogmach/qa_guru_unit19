@@ -28,6 +28,7 @@ allure {
 dependencies {
     testImplementation(
             "io.rest-assured:rest-assured:$restAssuredVersion",
+            // json-schema-validator необходима для проверки соответствия JSON схеме
             "io.rest-assured:json-schema-validator:$restAssuredVersion",
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "org.assertj:assertj-core:3.22.0",

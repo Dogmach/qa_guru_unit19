@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "id": 9222968140497185084,
+      "petId": 0,
+      "quantity": 0,
+      "shipDate": "2022-04-24T12:46:04.571+0000",
+      "status": "placed",
+      "complete": true
+    }
+  ],
+  "required": [
+    "id",
+    "shipDate",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "integer",
+      "examples": [
+        "9222968140497185084"
+      ]
+    },
+    "snipDate": {
+      "$id": "#/properties/snipDate",
+      "type": "integer",
+      "examples": [
+        "2022-04-24T12:46:04.571+0000"
+      ]
+    },
+    "status": {
+      "$id": "#/properties/status",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "placed"
+      ]
+    }
+  },
+
+  "additionalProperties": true
+}
